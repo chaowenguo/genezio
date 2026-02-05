@@ -1,1 +1,0 @@
---homeIp point-of-presence.sock.sh --homePort 443 --id genezio000 --version 57 --clientKey proxyrack-pop-client --clientType PoP --ppid 354441 --osType Linux --osRelease 6.8.0-38-generic --osArch x64
