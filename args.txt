@@ -1,1 +1,0 @@
-/usr/bin/node /tmp/package/script.js --homeIp point-of-presence.sock.sh --homePort 443 --id genezio000 --version 54 --clientKey proxyrack-pop-client --clientType PoP
